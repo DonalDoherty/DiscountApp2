@@ -32,4 +32,7 @@
     <string name="convenience">Convenience</string>
     <string name="back">Back</string>
     <string name="results">Results</string>
+    <string name="login">Login</string>
+    <string name="register">register</string>
+    <string name="title_activity_register">Register</string>
 </resources>
