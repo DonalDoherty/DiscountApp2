@@ -39,6 +39,7 @@ class RegisterActivity : AppCompatActivity() {
                     }
                     else if(it.isSuccessful) {
                         Toast.makeText(this, "Successfully Registered", Toast.LENGTH_SHORT).show()
+                        //create user with provided details
                         createUser(username)
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
