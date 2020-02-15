@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "738150759407",
+    "firebase_url": "https://discountapp-e8c10.firebaseio.com",
+    "project_id": "discountapp-e8c10",
+    "storage_bucket": "discountapp-e8c10.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:738150759407:android:510ebf6241873ab3e6141a",
+        "android_client_info": {
+          "package_name": "com.example.discountapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "738150759407-8mp2cl8qi3tdq751i59fp4i8qhtl36qm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.discountapp",
+            "certificate_hash": "e93213b79882ddfca1b70bc3a39d5321fb38c22c"
+          }
+        },
+        {
+          "client_id": "738150759407-597dqnopgrb1a05ht531ko2dkbr9gdbi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSCIDnUcyzXwAQf7r9KBii-Da17JhxG4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "738150759407-597dqnopgrb1a05ht531ko2dkbr9gdbi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
