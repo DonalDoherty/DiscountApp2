@@ -35,4 +35,8 @@
     <string name="login">Login</string>
     <string name="register">register</string>
     <string name="title_activity_register">Register</string>
+    <string name="logout">Logout</string>
+    <string name="profile">Profile</string>
+    <string name="search">Search</string>
+    <string name="main_menu">Main Menu</string>
 </resources>

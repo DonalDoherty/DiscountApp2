@@ -3,14 +3,12 @@ package com.example.discountapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_register.*
 import com.example.discountapp.models.User
-import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.DocumentReference
+
 
 class RegisterActivity : AppCompatActivity() {
     private val mAuth = FirebaseAuth.getInstance()
