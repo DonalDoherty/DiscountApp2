@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.maim
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private val mAuth = FirebaseAuth.getInstance()
@@ -16,6 +16,19 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
+        }
+        profile_button_main.setOnClickListener{it ->
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+        search_button_main.setOnClickListener{it ->
+
+        }
+        take_button_main.setOnClickListener{it ->
+
+        }
+        upload_button_main.setOnClickListener{it ->
+
         }
 
     }
