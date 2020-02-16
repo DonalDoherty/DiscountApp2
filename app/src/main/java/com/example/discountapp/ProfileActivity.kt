@@ -4,15 +4,20 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.tasks.Continuation
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.UploadTask
 import com.squareup.picasso.Picasso
 
 import kotlinx.android.synthetic.main.activity_profile.*
@@ -21,10 +26,11 @@ class ProfileActivity : AppCompatActivity() {
     private val mAuth = FirebaseAuth.getInstance()
     private val db = FirebaseFirestore.getInstance()
     private val userId = mAuth.currentUser!!.uid
+    private val storage = FirebaseStorage.getInstance()
+    private val docRef = db.collection("users").document(userId)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-        val docRef = db.collection("users").document(userId)
         docRef.get().addOnSuccessListener { document ->
             if (document != null) {
                 //get and display avatar using picasso
@@ -93,7 +99,6 @@ class ProfileActivity : AppCompatActivity() {
         }
         builder.setView(layout)
         builder.setPositiveButton(android.R.string.ok) { dialog, p1 ->
-
         }
         builder.setNegativeButton(android.R.string.cancel) { dialog, p1 ->
             dialog.cancel()
@@ -103,13 +108,39 @@ class ProfileActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK && requestCode == 0){
+        if (resultCode == Activity.RESULT_OK && requestCode == 0) {
             val imageUri = data!!.data;
-            profile_image_profile.setImageURI(imageUri)
+            if (imageUri is Uri) {
+                uploadImage(imageUri)
+                profile_image_profile.setImageURI(imageUri)
+            }
         }
     }
 
-    fun showEditBio(){
+    fun uploadImage(filePath: Uri) {
+        val ref = storage.reference.child("images/" + userId)
+        val uploadTask = ref?.putFile(filePath!!)
+
+        val urlTask =
+            uploadTask?.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
+                if (!task.isSuccessful) {
+                    task.exception?.let {
+                        throw it
+                    }
+                }
+                return@Continuation ref.downloadUrl
+            })?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val downloadUri = task.result
+                    updateUserDb(downloadUri.toString())
+                }
+            }
+    }
+
+    private fun updateUserDb(downloadUri :String){
+        db.collection("users").document(userId).update("avatar", downloadUri)
+    }
+    private fun showEditBio(){
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Edit Bio")
         val layout = LinearLayout(this)
