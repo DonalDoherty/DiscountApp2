@@ -60,7 +60,8 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/upload_button_main"
-        app:layout_constraintStart_toStartOf="@+id/take_button_main" />
+        app:layout_constraintStart_toStartOf="@+id/take_button_main"
+        app:layout_constraintTop_toBottomOf="@+id/take_button_main" />
 
     <Button
         android:id="@+id/profile_button_main"
@@ -68,9 +69,7 @@
         android:layout_height="wrap_content"
         android:text="@string/profile"
         app:layout_constraintBottom_toTopOf="@+id/recents_list_main"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintTop_toBottomOf="@+id/upload_button_main" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/search_button_main"
@@ -78,7 +77,6 @@
         android:layout_height="wrap_content"
         android:text="@string/search"
         app:layout_constraintBottom_toTopOf="@+id/recents_list_main"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/take_button_main" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
