@@ -22,13 +22,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         search_button_main.setOnClickListener{it ->
-
+            val intent = Intent(this, SearchActivity::class.java)
+            startActivity(intent)
         }
-        take_button_main.setOnClickListener{it ->
-
-        }
-        upload_button_main.setOnClickListener{it ->
-
+        post_create_main.setOnClickListener{it->
+            val intent = Intent(this, CreateActivity::class.java )
+            startActivity(intent)
         }
 
     }

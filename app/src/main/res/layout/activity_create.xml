@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateActivity">
+
+    <Button
+        android:id="@+id/select_photo_create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/select_photo"
+        app:layout_constraintEnd_toEndOf="@+id/post_title_create"
+        app:layout_constraintTop_toBottomOf="@+id/post_image_create" />
+
+    <ImageView
+        android:id="@+id/post_image_create"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:contentDescription="@string/post_photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <Button
+        android:id="@+id/take_button_create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:text="@string/take_photo"
+        app:layout_constraintEnd_toStartOf="@+id/select_photo_create"
+        app:layout_constraintStart_toStartOf="@+id/post_title_create"
+        app:layout_constraintTop_toBottomOf="@+id/post_image_create" />
+
+    <EditText
+        android:id="@+id/post_title_create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/title"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/take_button_create" />
+
+    <EditText
+        android:id="@+id/post_desc_create"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/description"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/post_expiry_create" />
+
+    <Spinner
+        android:id="@+id/category_spinner_create"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:accessibilityHeading="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/post_title_create" />
+
+    <EditText
+        android:id="@+id/prev_price_create"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:hint="@string/previous_price"
+        android:importantForAutofill="no"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/category_spinner_create" />
+
+    <EditText
+        android:id="@+id/current_price_create"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:hint="@string/current_price"
+        android:importantForAutofill="no"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/category_spinner_create" />
+
+    <EditText
+        android:id="@+id/post_expiry_create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/expiry_date"
+        android:importantForAutofill="no"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/prev_price_create" />
+
+    <Button
+        android:id="@+id/cancel_button_create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/post_button_create"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/post_button_create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="80dp"
+        android:text="@string/post"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -39,4 +39,16 @@
     <string name="profile">Profile</string>
     <string name="search">Search</string>
     <string name="main_menu">Main Menu</string>
+    <string name="create_post">Create Post</string>
+    <string name="button">Button</string>
+    <string name="select_photo">Select Photo</string>
+    <string name="title">Title</string>
+    <string name="post_photo">Post Photo</string>
+    <string name="description">Description</string>
+    <string name="current_price">Current Price</string>
+    <string name="previous_price">Previous Price</string>
+    <string name="expiry_date">Expiry Date</string>
+    <string name="post">Post</string>
+    <string name="cancel">Cancel</string>
+    <string name="edit_bio">Edit Bio</string>
 </resources>
