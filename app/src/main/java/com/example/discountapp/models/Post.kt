@@ -2,26 +2,26 @@ package com.example.discountapp.models
 
 import java.time.LocalDate
 
-class Post(var id: String? = null,
+class Post(var postCreator: String? = null,
            var imgUrl: String? = null,
            var title: String? = null,
            var category: String? = null,
-           var curPrice: Int? = null,
-           var prevPrice: Int? = null,
-           var desc: String? = null,
-           var expDate: LocalDate? = null) {
+           var prevPrice: Float? = null,
+           var curPrice: Float? = null,
+           var expDate: String? = null,
+           var desc: String? = null) {
 
     constructor(
-        id: String, imgUrl: String, title: String, category: String,
-        curPrice: Int, prevPrice: Int, desc: String, expDate: LocalDate
+        postCreator: String, imgUrl: String, title: String, category: String,
+        prevPrice: Float, curPrice: Float, expDate: String, desc: String
     ) : this() {
-        this.id = id
+        this.postCreator = postCreator
         this.imgUrl = imgUrl
         this.title = title
         this.category = category
-        this.curPrice = curPrice
         this.prevPrice = prevPrice
-        this.desc = desc
+        this.curPrice = curPrice
         this.expDate = expDate
+        this.desc = desc
     }
 }

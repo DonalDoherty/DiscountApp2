@@ -4,17 +4,18 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.discountapp.models.Post
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
@@ -28,9 +29,16 @@ class ProfileActivity : AppCompatActivity() {
     private val userId = mAuth.currentUser!!.uid
     private val storage = FirebaseStorage.getInstance()
     private val docRef = db.collection("users").document(userId)
+    private var adaptedPosts = mutableListOf<Post?>()
+    var postAdapter = PostAdapter(adaptedPosts as List<Post>)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+        var mLayoutManager = LinearLayoutManager(this)
+        uploaded_posts_profile.layoutManager = mLayoutManager
+        uploaded_posts_profile.itemAnimator = DefaultItemAnimator()
+        uploaded_posts_profile.adapter = postAdapter
         docRef.get().addOnSuccessListener { document ->
             if (document != null) {
                 //get and display avatar using picasso
@@ -48,7 +56,9 @@ class ProfileActivity : AppCompatActivity() {
                     var scoreText = score.toString()
                     profile_score_profile.text = scoreText
                 }
-                var uploadedPosts = document.get("uploadedPosts")
+                var uploadedPosts = document.get("uploadedPosts") as List<String>
+                importPosts(uploadedPosts)
+
                 var userName = document.get("userName")
                 if (userName is String){
                     profile_username_profile.text = userName
@@ -79,6 +89,18 @@ class ProfileActivity : AppCompatActivity() {
 
         }
 
+    fun importPosts(postList: List<String>){
+        var adaptedPosts = mutableListOf<Post?>()
+        var postIterator = postList.iterator()
+        while (postIterator.hasNext()){
+            db.collection("posts").document(postIterator.next()).get().addOnSuccessListener { documentSnapshot ->
+                adaptedPosts.add(documentSnapshot.toObject(Post::class.java))
+            }
+            this.adaptedPosts = adaptedPosts
+            postAdapter.notifyDataSetChanged()
+        }
+
+    }
     fun showEditAvatar(){
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Change Avatar")

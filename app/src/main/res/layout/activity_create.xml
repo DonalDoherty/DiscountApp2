@@ -16,7 +16,7 @@
 
     <ImageView
         android:id="@+id/post_image_create"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="150dp"
         android:contentDescription="@string/post_photo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,7 +60,7 @@
 
     <Spinner
         android:id="@+id/category_spinner_create"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:accessibilityHeading="false"
         app:layout_constraintEnd_toEndOf="parent"

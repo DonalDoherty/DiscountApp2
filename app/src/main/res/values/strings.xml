@@ -42,7 +42,6 @@
     <string name="create_post">Create Post</string>
     <string name="button">Button</string>
     <string name="select_photo">Select Photo</string>
-    <string name="title">Title</string>
     <string name="post_photo">Post Photo</string>
     <string name="description">Description</string>
     <string name="current_price">Current Price</string>
@@ -51,4 +50,6 @@
     <string name="post">Post</string>
     <string name="cancel">Cancel</string>
     <string name="edit_bio">Edit Bio</string>
+    <string name="thumbnail">thumbnail</string>
+    <string name="title">Title</string>
 </resources>
