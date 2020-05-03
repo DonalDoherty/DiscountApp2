@@ -1,6 +1,6 @@
-# DiscountApp
+# DiscountApp V2
 
-Donal Doherty - 20071040
+Donal Doherty - 20071040 
 
 App developed for Mobile App Development 2 on the Software Systems Development course (Year 3). App which allows users to upload photos 
 and info of supermarket deals and share them to other users in a geopgraphic radius
