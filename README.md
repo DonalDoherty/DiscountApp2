@@ -7,13 +7,18 @@ and info of supermarket deals and share them to other users in a geopgraphic rad
 
 Current features:
 Register with email password through firebase
-set profile avatar, and bio
+Ability to Change Avatar
+Ability to edit Bio
 create posts
+View posts
+Favourite Posts
+Delete Posts
+
 
 Issues:
-Ui is extremely barebones,
-searching and filtering not implemented,
-cannot view posts
+Ui is purely functional, no thought was put into aesthethics or best practices
+searching and filtering not implemented
 
-Demo Link: https://www.youtube.com/watch?v=62lWYFiGpxU&feature=youtu.be
-Repo Link: https://github.com/DonalDoherty/DiscountApp
+
+Demo Link: 
+Repo Link: https://github.com/DonalDoherty/DiscountApp2
