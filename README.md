@@ -3,7 +3,7 @@
 Donal Doherty - 20071040 
 
 App developed for Mobile App Development 2 on the Software Systems Development course (Year 3). App which allows users to upload photos 
-and info of supermarket deals and share them to other users in a geopgraphic radius
+and info of supermarket deals and share them to other users.
 
 Current features:
 Register with email password through firebase
@@ -20,5 +20,5 @@ Ui is purely functional, no thought was put into aesthethics or best practices
 searching and filtering not implemented
 
 
-Demo Link: 
+Demo Link: https://www.youtube.com/watch?v=HcH8Fhb5GX4&feature=youtu.be
 Repo Link: https://github.com/DonalDoherty/DiscountApp2
