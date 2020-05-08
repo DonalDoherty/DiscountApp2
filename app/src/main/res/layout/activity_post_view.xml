@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/postImage_post_view"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:contentDescription="@string/image_of_post"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <ImageView
+        android:id="@+id/uploaderAvatar_post_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/image_of_uploader"
+        app:layout_constraintBottom_toTopOf="@+id/likeButton_post_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description_post_view"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/title_post_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title"
+        app:layout_constraintEnd_toEndOf="@+id/postImage_post_view"
+        app:layout_constraintStart_toStartOf="@+id/postImage_post_view"
+        app:layout_constraintTop_toBottomOf="@+id/postImage_post_view" />
+
+    <TextView
+        android:id="@+id/currentPrice_post_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/current_price"
+        app:layout_constraintBottom_toTopOf="@+id/category_post_view"
+        app:layout_constraintEnd_toStartOf="@+id/title_post_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_post_view" />
+
+    <TextView
+        android:id="@+id/currentPriceText_post_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/current_price"
+        app:layout_constraintBottom_toTopOf="@+id/currentPrice_post_view"
+        app:layout_constraintEnd_toEndOf="@+id/currentPrice_post_view"
+        app:layout_constraintStart_toStartOf="@+id/currentPrice_post_view" />
+
+    <TextView
+        android:id="@+id/prevPrice_post_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/previous_price"
+        app:layout_constraintBottom_toTopOf="@+id/exp_post_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/title_post_view"
+        app:layout_constraintTop_toBottomOf="@+id/title_post_view" />
+
+    <TextView
+        android:id="@+id/prevPriceText_post_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/previous_price"
+        app:layout_constraintBottom_toTopOf="@+id/prevPrice_post_view"
+        app:layout_constraintEnd_toEndOf="@+id/prevPrice_post_view"
+        app:layout_constraintStart_toStartOf="@+id/prevPrice_post_view" />
+
+    <TextView
+        android:id="@+id/category_post_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/category"
+        app:layout_constraintBottom_toTopOf="@+id/description_post_view"
+        app:layout_constraintEnd_toEndOf="@+id/currentPrice_post_view"
+        app:layout_constraintStart_toStartOf="@+id/currentPrice_post_view" />
+
+    <TextView
+        android:id="@+id/categoryText_post_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/category"
+        app:layout_constraintBottom_toTopOf="@+id/category_post_view"
+        app:layout_constraintEnd_toEndOf="@+id/category_post_view" />
+
+    <TextView
+        android:id="@+id/exp_post_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/expiry_date"
+        app:layout_constraintBottom_toTopOf="@+id/description_post_view"
+        app:layout_constraintEnd_toEndOf="@+id/prevPrice_post_view"
+        app:layout_constraintStart_toStartOf="@+id/prevPrice_post_view" />
+
+    <TextView
+        android:id="@+id/expText_post_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/expiry_date"
+        app:layout_constraintBottom_toTopOf="@+id/exp_post_view"
+        app:layout_constraintEnd_toEndOf="@+id/exp_post_view" />
+
+    <TextView
+        android:id="@+id/description_post_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/description"
+        app:layout_constraintBottom_toBottomOf="@+id/deleteButton_post_view"
+        app:layout_constraintEnd_toEndOf="@+id/title_post_view"
+        app:layout_constraintStart_toStartOf="@+id/title_post_view"
+        app:layout_constraintTop_toTopOf="@+id/postImage_post_view" />
+
+    <TextView
+        android:id="@+id/uploaderName_post_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/username"
+        app:layout_constraintBottom_toBottomOf="@+id/uploaderAvatar_post_view"
+        app:layout_constraintStart_toEndOf="@+id/uploaderAvatar_post_view"
+        app:layout_constraintTop_toTopOf="@+id/uploaderAvatar_post_view" />
+
+    <Button
+        android:id="@+id/likeButton_post_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/like"
+        app:layout_constraintBottom_toTopOf="@+id/deleteButton_post_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/deleteButton_post_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/likeButton_post_view"
+        app:layout_constraintStart_toStartOf="@+id/likeButton_post_view" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

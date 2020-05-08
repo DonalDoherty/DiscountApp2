@@ -5,6 +5,7 @@
     android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context=".ProfileActivity">
 
     <ImageView
@@ -31,6 +32,16 @@
         android:layout_height="wrap_content"
         android:text="@string/score"
         android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_score_profile2"
+        app:layout_constraintStart_toEndOf="@+id/profile_score_profile2" />
+
+    <TextView
+        android:id="@+id/profile_score_profile2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/scorePeriod"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/profile_image_profile"
         app:layout_constraintTop_toBottomOf="@+id/profile_username_profile" />
 

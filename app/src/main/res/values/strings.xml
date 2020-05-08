@@ -52,4 +52,13 @@
     <string name="edit_bio">Edit Bio</string>
     <string name="thumbnail">thumbnail</string>
     <string name="title">Title</string>
+    <string name="sign_in_google">Sign In with Google</string>
+    <string name="sign_in_email">Sign In with Email</string>
+    <string name="sign_in_phone">Sign In with Phone</string>
+    <string name="scorePeriod">Score:</string>
+    <string name="delete">Delete</string>
+    <string name="like">Like</string>
+    <string name="category">Category</string>
+    <string name="image_of_post">Image of Post</string>
+    <string name="image_of_uploader">Image of Uploader</string>
 </resources>

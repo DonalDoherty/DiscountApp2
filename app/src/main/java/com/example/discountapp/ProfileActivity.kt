@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
 import com.squareup.picasso.Picasso
@@ -30,7 +31,9 @@ class ProfileActivity : AppCompatActivity() {
     private val storage = FirebaseStorage.getInstance()
     private val docRef = db.collection("users").document(userId)
     private var adaptedPosts = mutableListOf<Post?>()
-    var postAdapter = PostAdapter(adaptedPosts as List<Post>)
+    private var adaptedPosts2 = mutableListOf<Post?>()
+    private var postAdapter = PostAdapter(adaptedPosts as List<Post>)
+    private var postAdapter2 = PostAdapter(adaptedPosts2 as List<Post>)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +42,11 @@ class ProfileActivity : AppCompatActivity() {
         uploaded_posts_profile.layoutManager = mLayoutManager
         uploaded_posts_profile.itemAnimator = DefaultItemAnimator()
         uploaded_posts_profile.adapter = postAdapter
+        var mLayoutManager2 = LinearLayoutManager(this)
+        like_posts_profile.layoutManager = mLayoutManager2
+        like_posts_profile.itemAnimator = DefaultItemAnimator()
+        like_posts_profile.adapter = postAdapter2
+
         docRef.get().addOnSuccessListener { document ->
             if (document != null) {
                 //get and display avatar using picasso
@@ -50,7 +58,8 @@ class ProfileActivity : AppCompatActivity() {
                 if (bio is String) {
                     profile_bio_profile.text = bio
                 }
-                var likedPosts = document.get("likedPosts")
+                var likedPosts = document.get("likedPosts") as List<String>
+                importPosts2(likedPosts)
                 var score = document.get("score")
                 if (score is Number){
                     var scoreText = score.toString()
@@ -90,16 +99,34 @@ class ProfileActivity : AppCompatActivity() {
         }
 
     fun importPosts(postList: List<String>){
-        var adaptedPosts = mutableListOf<Post?>()
-        var postIterator = postList.iterator()
-        while (postIterator.hasNext()){
-            db.collection("posts").document(postIterator.next()).get().addOnSuccessListener { documentSnapshot ->
-                adaptedPosts.add(documentSnapshot.toObject(Post::class.java))
+        for (id in postList)
+            db.collection("posts").document(id).get().addOnSuccessListener { documentSnapshot ->
+                var post = documentSnapshot.toObject<Post>()
+                if (post != null) {
+                    post.id = id
+                }
+                adaptedPosts.add(post)
+                this.adaptedPosts = adaptedPosts
+                postAdapter.notifyDataSetChanged()
             }
-            this.adaptedPosts = adaptedPosts
-            postAdapter.notifyDataSetChanged()
         }
 
+    fun importPosts2(postList: List<String>){
+        for (id in postList)
+            db.collection("posts").document(id).get().addOnSuccessListener { documentSnapshot ->
+                if (documentSnapshot.toObject<Post>() != null)
+                {
+                    var post = documentSnapshot.toObject<Post>()
+                    if (post != null) {
+                        post.id = id
+                        adaptedPosts2.add(post)
+                        this.adaptedPosts2 = adaptedPosts2
+                        postAdapter2.notifyDataSetChanged()
+                    }
+                }
+
+
+            }
     }
     fun showEditAvatar(){
         val builder = AlertDialog.Builder(this)

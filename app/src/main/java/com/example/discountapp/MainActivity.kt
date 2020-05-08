@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, CreateActivity::class.java )
             startActivity(intent)
         }
-
     }
 }
 

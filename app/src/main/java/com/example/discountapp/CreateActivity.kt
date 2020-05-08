@@ -29,6 +29,7 @@ class CreateActivity : AppCompatActivity() {
     private val storage = FirebaseStorage.getInstance()
     private val db = FirebaseFirestore.getInstance()
     private val userId = mAuth.currentUser!!.uid.toString()
+    private var postId = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create)
@@ -78,8 +79,7 @@ class CreateActivity : AppCompatActivity() {
     {
      //creates post document in posts collection, adds the generated uuid to the users created posts list
         //upload image to storage
-        var newUri = Uri.parse(imagePath)
-        uploadImage(newUri)
+        uploadImage(imageUri)
         val post = Post(postCreator, downloadUri.toString(), title, category, prevPrice, currentPrice, expDate, description)
         db.collection("posts")
             .add(post)
@@ -89,15 +89,17 @@ class CreateActivity : AppCompatActivity() {
                 db.collection("users").document(userId).get().addOnSuccessListener { document ->
                     var uploadedPosts = document.get("likedPosts") as MutableList<String>
                     uploadedPosts.add(documentReference.id)
+                    var postId = documentReference.id
+                    this.postId = postId
                     db.collection("users").document(userId).update("uploadedPosts", uploadedPosts)
+                    Toast.makeText(this, "Post Created", Toast.LENGTH_SHORT).show()
                 }
             }
     }
 
-    fun uploadImage(filePath: Uri) {
-        val ref = storage.reference.child("posts/" + userId)
+    private fun uploadImage(filePath: Uri?) {
+        val ref = storage.reference.child("posts/" + postId)
         val uploadTask = ref?.putFile(filePath!!)
-
         val urlTask =
             uploadTask?.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
                 if (!task.isSuccessful) {
@@ -109,9 +111,13 @@ class CreateActivity : AppCompatActivity() {
             })?.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val downloadUri = task.result
-                    this.downloadUri = downloadUri
+                    updatePostDb(downloadUri.toString())
                 }
             }
+    }
+
+    private fun updatePostDb(downloadUri :String){
+        db.collection("posts").document(postId).update("imgUrl", downloadUri)
     }
 }
 

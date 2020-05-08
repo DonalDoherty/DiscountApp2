@@ -7,7 +7,6 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
-
 class LoginActivity : AppCompatActivity() {
     private val mAuth = FirebaseAuth.getInstance()
 
@@ -41,5 +40,6 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
     }
 }

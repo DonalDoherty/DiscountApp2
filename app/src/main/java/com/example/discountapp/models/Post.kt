@@ -9,6 +9,7 @@ class Post(var postCreator: String? = null,
            var prevPrice: Float? = null,
            var curPrice: Float? = null,
            var expDate: String? = null,
+           var id: String? = null,
            var desc: String? = null) {
 
     constructor(
